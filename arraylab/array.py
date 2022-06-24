@@ -3,11 +3,10 @@
 class Array:
     
     def __init__(self, initial_list: list = None, /) -> None:
-        self.__init = initial_list
         self.__list = initial_list if isinstance(initial_list, list) else []
     
     def include(self, other: 'Array') -> 'Array':
-        self.__list.extend([i for i in other])
+        self.__list.extend(other)
         return self
     
     def push(self, value: object) -> 'Array':
@@ -39,5 +38,5 @@ class Array:
         return iter(self.__list)
     
     def __str__(self) -> str:
-        comma_sep = ", ".join(f"{str(x)}: {type(x).__name__}" for x in self.__list) or "empty"
-        return f"Array[{comma_sep}]"
+        comma_sep = ", ".join(f"{x!r}: {type(x).__name__}" for x in self.__list) or "empty"
+        return f"arraylab.Array[{comma_sep}]"
